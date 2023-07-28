@@ -6,13 +6,17 @@ basically the code is devided into 4 sections:
 1. setting the system which  is biult automatically by Unity once yopu created the script like this:
 
 using System.Collections;
+
 using System.Collections.Generic;
+
 using UnityEngine;
 
-2. the variable decleration which is inside the "public" class.
-   the public class has
+2. the variable decleration which is inside the "public" class (example the PlayerController) we can set up the varibles
+   the public class has:
+   
    - void start: where we coding for the begining of our project ( game).
      void Start()
+     
    - void update: where we coding while the player(for example) if in the moving status.
   void Update()
 
@@ -29,28 +33,37 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // from the Edit>input Manager we now wnat to use the inputs which is shortcut for ( Input Manager)
-        horizontalInput = Input.GetAxis("Horizontal");
-
-        forwardInput = Input.GetAxis("Vertical");
-        // move the vehicle forward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        // move the vehicle right and left
-        //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed);
-        //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
-
-        // we turn the vehicle
-        transform.Rotate(Vector3.up, horizontalInput * turnSpeed * Time.deltaTime);
-
-
-        //transform.Translate(Vector3.forward * Time.deltaTime * 20);  //  The transform (class) attached to this GameObject
-        // the Translate (method) from transform class is used
-        // we want to use Translate method to translate (move the position of our vehicle)
-        // Vector3: Creates a new vector with given x, y, z components
+        
     }
 }
 
-## to move the car (player) right and left
+3. inside the public class we can use the functions or methods that already biult in Unity, an axample of this is if we wanted to move a car.
 
+
+## to move the car (player) right and left with respect to the speed
+
+![image](https://github.com/Meshaal-Mouawad/Unity-Junior-Programmer-ProjectCode/assets/72484101/35cc10e1-f494-4f40-9099-0fae20c13478)
+
+public class PlayerController : MonoBehaviour
+{
+    private float speed = 5.0f;
+    private float turnSpeed = 25.0f;
+    private float horizontalInput;
+    
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         horizontalInput = Input.GetAxis("Horizontal");
+        // move the vehicle right and left
+        transform.Translate(Vector3.right * Time.deltaTime * turnSpeed);
+    }
+}
+
+## To rotate the vehicle, we may add this:
+
 
